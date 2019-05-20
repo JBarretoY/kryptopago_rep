@@ -1,0 +1,19 @@
+<?php
+
+namespace App\Http\Controllers\Blockchain;
+
+use App\Models\User;
+use Blockchain\Blockchain;
+//use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+
+class BlockchainController extends Controller
+{
+    public function getInfWallet(){
+        $block = new Blockchain();
+        /*$user_id = currentUser()->id;
+        $user = User::with('wallets')->first();*/
+        $dataWallet = $block->Explorer->getAddress('14JLkLzo24GzLgGfmLP5c9SUAzxTygVDYo',1);
+        dd($dataWallet,(float)$dataWallet->transactions[0]->inputs[0]->value);
+    }
+}
